@@ -5,7 +5,7 @@ class DockingStation
 
 
   def initialize()
-    #@bikes = []
+    @bikes = []
   end
 
   def release_bike
