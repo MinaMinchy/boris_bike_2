@@ -9,7 +9,6 @@ describe DockingStation do
     docking_station = DockingStation.new
     bike = Bike.new
     docking_station.dock_bike(bike)
-    docking_station.release_bike
     expect(docking_station.release_bike.working?).to eq true
 
 
@@ -21,7 +20,7 @@ describe DockingStation do
     bike = Bike.new
     docking_station = DockingStation.new
     docking_station.dock_bike(bike)
-    expect(docking_station.bike.class).to eq Bike
+    expect(docking_station.bikes).to include(bike)
   end
 
 
@@ -33,6 +32,16 @@ describe DockingStation do
 
   it 'raises an error when there are no bikes available' do
     expect { subject.release_bike }.to raise_error 'No bikes available'
+  end
+
+
+  it 'return error if its docking capacity is exceeded ' do
+     docking_station = DockingStation.new
+     bike = Bike.new
+     docking_station.dock_bike(bike)
+     bike2 = Bike.new
+     expect { docking_station.dock_bike(bike2)}.to raise_error "There is no more capacity"
+
   end
 
 end

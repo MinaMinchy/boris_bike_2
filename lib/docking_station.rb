@@ -1,7 +1,7 @@
 require_relative 'bike'
 
 class DockingStation
-  attr_reader :bike
+  attr_reader :bikes
 
 
   def initialize()
@@ -9,12 +9,14 @@ class DockingStation
   end
 
   def release_bike
-    fail 'No bikes available' unless @bike #'guard condition'
-    @bike
+    fail 'No bikes available' unless !@bikes.empty?  #'guard condition'
+    @bikes.pop
   end
 
   def dock_bike(bike)
-     @bike = bike
+    raise "There is no more capacity" unless @bikes.length == 0
+     @bikes << bike
+
   end
 
 
