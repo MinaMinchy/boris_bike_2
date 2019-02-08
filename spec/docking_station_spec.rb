@@ -7,7 +7,7 @@ describe DockingStation do
 
   it "gets the bike and expects it to work" do
     docking_station = DockingStation.new
-    bike = subject.release_bike
+    bike = docking_station.release_bike 
     expect(bike.working?).to eq true
   end
 
@@ -21,10 +21,12 @@ describe DockingStation do
 
 
   it { is_expected.to respond_to(:dock_bike).with(1).argument }
+
+
+describe '#release_bike' do
+  it 'raises an error when there are nk bikes available' do
+    expect { subject.release_bike }.to raise_error 'No bikes available'
+  end
 end
-  # # arrange
-  # docking_station = DockingStation.new
-  # # act
-  # bike = docking_station.release_bike
-  # # assert
-  # it { is_expected bike.class to eq Bike}
+
+end
