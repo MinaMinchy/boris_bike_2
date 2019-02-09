@@ -37,7 +37,7 @@ describe DockingStation do
   it 'raises error if docking station at capacity' do
     docking_station = DockingStation.new
     bike = Bike.new
-    20.times { docking_station.dock_bike Bike.new }
+    DockingStation::DEFAULT_CAPACITY.times { docking_station.dock_bike Bike.new }
     expect { docking_station.dock_bike(Bike.new)}.to raise_error{'No spase left'}
   end
 
