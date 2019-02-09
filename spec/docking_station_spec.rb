@@ -10,10 +10,8 @@ describe DockingStation do
     bike = Bike.new
     docking_station.dock_bike(bike)
     expect(docking_station.release_bike.working?).to eq true
-
-
-
   end
+
 
   it 'docks a bike' do
     # arrange
@@ -35,13 +33,19 @@ describe DockingStation do
   end
 
 
-  it 'return error if its docking capacity is exceeded ' do
-     docking_station = DockingStation.new
-     bike = Bike.new
-     docking_station.dock_bike(bike)
-     bike2 = Bike.new
-     expect { docking_station.dock_bike(bike2)}.to raise_error "There is no more capacity"
+  # it 'return error if its docking capacity is exceeded ' do
+  #    docking_station = DockingStation.new
+  #    bike = Bike.new
+  #    docking_station.dock_bike(bike)
+  #    bike2 = Bike.new
+  #    expect { docking_station.dock_bike(bike2)}.to raise_error "There is no more capacity"
 
+
+  it 'raises error if docking station at capacity' do
+    docking_station = DockingStation.new
+    bike = Bike.new
+    20.times { docking_station.dock_bike Bike.new }
+    expect { docking_station.dock_bike(Bike.new)}.to raise_error{'No spase left'}
   end
 
 end
