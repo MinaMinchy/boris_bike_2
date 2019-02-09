@@ -14,9 +14,19 @@ class DockingStation
   end
 
   def dock_bike(bike)
-    raise "There is no more capacity" if @bikes.count >=20 #error if bike is already has been docked
+    raise "There is no more capacity" if full? #error if bike is already has been docked
      @bikes << bike #saves docked bike into memory so we can see it later
+  end
 
+  private
+
+  def full?
+    @bikes.count >=20
+  end
+
+
+  def empty?
+    @bikes.empty?
   end
 
 

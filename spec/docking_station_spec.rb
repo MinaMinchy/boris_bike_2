@@ -33,13 +33,6 @@ describe DockingStation do
   end
 
 
-  # it 'return error if its docking capacity is exceeded ' do
-  #    docking_station = DockingStation.new
-  #    bike = Bike.new
-  #    docking_station.dock_bike(bike)
-  #    bike2 = Bike.new
-  #    expect { docking_station.dock_bike(bike2)}.to raise_error "There is no more capacity"
-
 
   it 'raises error if docking station at capacity' do
     docking_station = DockingStation.new
