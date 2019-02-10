@@ -41,4 +41,15 @@ describe DockingStation do
     expect { docking_station.dock_bike(Bike.new)}.to raise_error{'No spase left'}
   end
 
+
+   it 'allows a new docking station to be created with a variable capacity' do
+     docking_station = DockingStation.new
+     expect(docking_station).to respond_to(:capacity)
+   end
+
+
+   it 'initiates with default capacity if no capacity is supplied' do
+     docking_station = DockingStation.new
+     expect(docking_station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+   end
 end
